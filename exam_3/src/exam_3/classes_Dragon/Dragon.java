@@ -1,8 +1,9 @@
 package exam_3.classes_Dragon;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Dragon 
+public class Dragon  implements Serializable
 {
 	//Fields
 	protected String name;

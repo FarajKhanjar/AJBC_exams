@@ -1,6 +1,8 @@
 package exam_3.classes_Food;
 
-public class Food 
+import java.io.Serializable;
+
+public class Food implements Serializable
 {
 	//Fields
 	protected String name;
@@ -16,11 +18,9 @@ public class Food
 	}
 
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "Food [name=" + name + ", taste=" + taste + ", category=" + category + "]";
 	}
-	
-	
-	
 
 }
