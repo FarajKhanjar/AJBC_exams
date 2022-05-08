@@ -44,8 +44,7 @@ public class Food implements Serializable
 		else
 		{
 			throw new NonCapatilizedException();
-		}
-		
+		}		
 	}
 	
 	

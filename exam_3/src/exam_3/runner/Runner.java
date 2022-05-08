@@ -67,8 +67,8 @@ public class Runner
         dragon_1.setBirthDay(myChangingBirthday_1);
         
       //Error try:
-        LocalDate myChangingBirthday_2 = LocalDate.of(1500, 10, 8);
-        dragon_1.setBirthDay(myChangingBirthday_2);
+      //  LocalDate myChangingBirthday_2 = LocalDate.of(1500, 10, 8);
+      //  dragon_1.setBirthDay(myChangingBirthday_2);
         		
 	}
 	
