@@ -22,5 +22,32 @@ public class Food implements Serializable
 	{
 		return "Food [name=" + name + ", taste=" + taste + ", category=" + category + "]";
 	}
+	
+	/**
+	 * method isDesert that returns true if the food is a sweet carbohydrate.
+	 */
+	public boolean isDesert()
+	{
+		if(taste==taste.Sweet && category==category.CarboHydrate)
+			return true;
+		else
+			return false;
+	}
+
+	public void setName(String name) throws NonCapatilizedException
+	{
+		Character theFirstLetterInName = name.charAt(0);
+		if(Character.isUpperCase(theFirstLetterInName))
+		{
+			this.name = name;
+		}
+		else
+		{
+			throw new NonCapatilizedException();
+		}
+		
+	}
+	
+	
 
 }

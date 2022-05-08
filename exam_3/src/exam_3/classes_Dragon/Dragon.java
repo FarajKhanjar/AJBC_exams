@@ -19,8 +19,25 @@ public class Dragon  implements Serializable
 	}
 
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "Dragon [name=" + name + ", birthDate=" + birthDate + ", flameIntensity=" + flameIntensity + "]";
+	}
+	
+	
+	public void setBirthDay(LocalDate birthDate) throws TooYoungException
+	{
+		LocalDate theBasicBirthday = LocalDate.of(888, 8, 8);
+		if(birthDate.isAfter(theBasicBirthday))
+		{
+			throw new TooYoungException();
+
+		}
+		else
+		{
+			this.birthDate = birthDate;
+			System.out.println("Sucsess to change birthDate");
+		}
 	}
 		
 
