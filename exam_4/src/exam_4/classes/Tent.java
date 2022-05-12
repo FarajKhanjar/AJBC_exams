@@ -17,6 +17,36 @@ public class Tent
 		this.height = height;
 	}
 	
+	
+
+
+	
+	@Override
+	public String toString() 
+	{
+		return "Tent [numPeople=" + numPeople + ", width=" + width + ", length=" + length + ", height=" + height + "]";
+	}
+
+
+
+	public double  getAreaOfTent()
+	{
+		return length*width;
+	}
+
+	public float getHeight() {
+		// TODO Auto-generated method stub
+		return height;
+	}
+
+
+
+	public int getNumPeople() {
+		// TODO Auto-generated method stub
+		return numPeople;
+	}
+	
+	
 
 	
 	
