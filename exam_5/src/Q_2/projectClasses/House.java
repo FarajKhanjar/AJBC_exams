@@ -14,6 +14,7 @@ public class House
 	private boolean hasBasement;
 	private float area;
 	
+	//Constructor
 	public House(Address address, List<Room> rooms, boolean hasYard, boolean hasBasement, float area) 
 	{
 		this.address = address;

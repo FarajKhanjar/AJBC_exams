@@ -1,6 +1,5 @@
 package Q_2.projectClasses;
 
-
 public class Room 
 {	
 	//Fields:
