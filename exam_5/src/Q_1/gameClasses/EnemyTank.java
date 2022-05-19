@@ -37,5 +37,4 @@ public class EnemyTank implements Enemy
 		System.out.println("The Tank is fire a weapon!!");
 		
 	}
-
 }
