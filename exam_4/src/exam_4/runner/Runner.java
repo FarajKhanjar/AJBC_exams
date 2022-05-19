@@ -23,23 +23,25 @@ public class Runner
 
 	public static void main(String[] args) 
 	{
-
 		createAllTentsList();
-		System.out.println("The Orginal Tents List:");
+		System.out.println("The Original Tents List:");
 		printListValues();	
 		
+		//Q1:
 		System.out.println("\nThe Tents List sorted by areas:");
 		tentsAreasSorted = tentsListAreaSort();
-		tentsAreasSorted.forEach(oneTent -> System.out.println(oneTent));
+		//tentsAreasSorted.forEach(oneTent -> System.out.println(oneTent));
+		printListAreasValues();
 		printMaximumArea();
+		//printListValues(); //test of original sort. 
 		
-		//printListValues();	//test of original sort. 
-		
-		//Q3:
+		//Q2:
 		System.out.println("\nThe Tents List from "+NUM_OF_PEOPLE+" people (the minimum), till the maximum number of people in tent:");
 		tentsPeopleSorted = sortTentsListByNumberOfPeople(NUM_OF_PEOPLE);
 		tentsPeopleSorted.forEach(oneTent -> System.out.println(oneTent));
-		printMaxHighCheck(); 
+		
+		//Q3:
+		printMaxHeighCheck(); 
 		
 		//Q4:
 		Map<Float,List<Tent>> myMap = getListsByHeight();
@@ -48,27 +50,28 @@ public class Runner
 		});
 		
 		//Q5:
-		System.out.println("\nThe Tents in the range:");
-		List<Tent> rangeList = myRange(myMap,10f,3f);
-		rangeList.forEach(oneTent->System.out.println(oneTent));
-		
-
-		
+		float maxHeighValue = 10;
+		float minHeighValue = 3;
+		System.out.println("\nThe Tents in the range ["+minHeighValue+" ~ "+maxHeighValue+"]:");
+		List<Tent> rangeList = myRange(myMap,maxHeighValue,minHeighValue);
+		rangeList.forEach(oneTent->System.out.println(oneTent));	
 	}
+	
 	
 	public static void createAllTentsList()
 	{
 		tentsList.add(new Tent(5,2.5f,2f,3f));
 		tentsList.add(new Tent(4,3f,2.5f,3f));
-		tentsList.add(new Tent(10,6f,5.5f,2f));
+		tentsList.add(new Tent(10,6f,5.5f,7f));
 		tentsList.add(new Tent(5,5.5f,2f,2.5f));
-		tentsList.add(new Tent(7,3.5f,4f,3f));
-		tentsList.add(new Tent(10,2.5f,2f,3f));
+		tentsList.add(new Tent(7,3.5f,4f,7f));
+		tentsList.add(new Tent(10,8.5f,5f,7f));
 		tentsList.add(new Tent(3,1.5f,3f,3f));
-		tentsList.add(new Tent(2,1f,2f,2f));
+		tentsList.add(new Tent(2,1f,2f,2.5f));
 		tentsList.add(new Tent(3,1.5f,2f,3f));
 		tentsList.add(new Tent(4,2f,2.5f,2.5f));	
 	}
+	
 	
 	public static List<Tent> tentsListAreaSort()
 	{
@@ -78,6 +81,7 @@ public class Runner
 		
 		return resultList;
 	}
+	
 	
 	private static void printListValues() 
 	{
@@ -93,11 +97,27 @@ public class Runner
 		}	
 	}
 	
+	private static void printListAreasValues() 
+	{
+		int index = 1;
+		
+		for (Tent oneTent : tentsAreasSorted) 
+		{
+			if(index==SIZE)
+				System.out.println(index + ")" + oneTent + ". Area:" + oneTent.getAreaOfTent());
+			else
+			System.out.println(index + ") " + oneTent + ". Area:" + oneTent.getAreaOfTent());
+			index++;
+		}	
+	}
+	
+	
 	private static void printMaximumArea()
 	{
-		System.out.println("The maximum Aria is:  "+ tentsAreasSorted.get(SIZE-1).getAreaOfTent() + " :)");
+		System.out.println("The maximum Area is:  "+ tentsAreasSorted.get(SIZE-1).getAreaOfTent() + " :)");
 	
 	}
+	
 	
 	public static List<Tent> sortTentsListByNumberOfPeople(int peopleNumInTent)
 	{
@@ -107,23 +127,24 @@ public class Runner
 	}
 	
 	
-	private static void printMaxHighCheck() 
+	
+	private static void printMaxHeighCheck() 
 	{
 		int index = 1;
 		System.out.println();
 		for (Tent oneTent : tentsList) 
 		{
-			System.out.println("Does Tent #"+index + ", [that it hight is: "+oneTent.getHeight()+"] the max height in list?? " + checkTheHighTentMax(oneTent));
+			System.out.println("Does Tent #"+index + ", [that it height is: "+oneTent.getHeight()+"] the max height in list?? " + checkTheHeighTentMax(oneTent));
 			index++;
 		}	
 	}
 	
-	private static boolean checkTheHighTentMax(Tent currentMax)
+	
+	private static boolean checkTheHeighTentMax(Tent currentMax)
 	{
-		Tent maxTentHighInList = Collections.max(tentsList, (tent1, tent2) -> Double.compare(tent1.getHeight(), tent2.getHeight()));
+		Tent maxTentHighInList = Collections.max(tentsList, (tent1, tent2) -> Float.compare(tent1.getHeight(), tent2.getHeight()));
 		return maxTentHighInList.getHeight() == currentMax.getHeight();
 	}
-	
 	
     public static Map<Float, List<Tent>> getListsByHeight()
     {
@@ -140,11 +161,8 @@ public class Runner
 		
 			myMap.put(cuurentHeight, heightList);
 		}
-		
 		return myMap;
     }
-    
-  //5
 	
   	public static List<Tent> myRange(Map<Float, List<Tent>> myMap,float max ,float min)
   	{
@@ -157,7 +175,7 @@ public class Runner
   		while(iterator.hasNext()) 
   		{
   			 Map.Entry<Float, List<Tent>> itCheck = iterator.next();
-  			 list_1=itCheck.getValue().stream().filter(oneTent-> oneTent.getHeight() <= max).filter(t-> t.getHeight() >= min)
+  			 list_1=itCheck.getValue().stream().filter(oneTent-> oneTent.getHeight() <= max).filter(oneTent-> oneTent.getHeight() >= min)
   					 .collect(Collectors.toList());
   			 list_2.addAll(list_1);
   		}
