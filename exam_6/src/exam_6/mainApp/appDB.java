@@ -11,7 +11,7 @@ import exam_6.basicClasses.StocksDB;
 public class appDB 
 {
 	static 	List<Command> list = new ArrayList<>();
-	private static final int  SIZE=10;
+	private static final int  SIZE=12;
 	
 	protected static List<Command> createListOfCommands()
 	{

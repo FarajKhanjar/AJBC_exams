@@ -28,7 +28,7 @@ public class InvestingApp {
 	{
 
 		transactionsList = appDB.createListOfCommands();
-		// transactionsList = appDB.addAIllegalArgumentTolist();
+		//transactionsList = appDB.addAIllegalArgumentTolist();
 		System.out.println("Transactions list: ");
 		appDB.printListValues();
 	}
