@@ -14,13 +14,10 @@ public class Runner
 		
 		Stock stock = new Stock("foofle", 3.0, 4.0);
 		System.out.println(stock);
-		
-		====================[Q1+Q2]======================
+
 		System.out.println(StocksDB.getStockByName("doodle"));
 		System.out.println(StocksDB.getStockByName("foofle"));
 		
-		
-		====================[Q3]======================
 		System.out.println(myDataBase.toString());
 	*/	
 		
